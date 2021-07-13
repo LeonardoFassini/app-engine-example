@@ -1,0 +1,9 @@
+node_modules
+public
+
+yarn.lock
+yarn-error.log
+
+cypress/videos/**
+
+.DS_Store

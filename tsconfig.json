@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/public",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "target": "es6",
+    "lib": ["es5", "es6", "dom", "esnext"],
+    "jsx": "react",
+    "baseUrl": "./src",
+    "types": ["node"],
+    "paths": {
+      "@app": ["app"],
+      "@app/*": ["app/*"],
+      "@atomic": ["atomic"],
+      "@atomic/*": ["atomic/*"]
+    }
+  },
+  "exclude": ["**/node_modules/*"]
+}
