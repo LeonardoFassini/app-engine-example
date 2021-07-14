@@ -13,7 +13,6 @@ import { Form } from '@atomic/mol.form/form.component';
 import { TextInput } from '@atomic/mol.input/text-input.component';
 import * as React from 'react';
 import { Redirect } from 'react-router-dom';
-import { Col, Grid, Row } from 'react-styled-flexboxgrid';
 
 export const Login: React.FC = () => {
   const authContext = React.useContext(AuthContext);
@@ -46,47 +45,41 @@ export const Login: React.FC = () => {
   return authContext.user ? (
     <Redirect to={AppPath.Todo.Base} />
   ) : (
-    <Grid fluid>
-      <Row middle='xs' center='xs'>
-        <Col xs={12} md={6} lg={4}>
-          <ContentFullHeightStyled>
-            <Card>
-              <H1>Bem vindo(a) a lista de TODOs</H1>
-              <Text>Faça o login para começar</Text>
-              <VSeparator />
-              <Form onSubmit={handleLoginSubmit}>
-                <TextInput
-                  label='Login'
-                  id='loginInput'
-                  type='text'
-                  onChange={setLoginText}
-                  value={loginText}
-                  dataTest='loginInput'
-                />
-                <VSeparator small />
-                <TextInput
-                  label='Senha'
-                  id='loginPassword'
-                  type='password'
-                  onChange={setPasswordText}
-                  value={passwordText}
-                  dataTest='passwordInput'
-                />
-                <VSeparator small />
-                <Button
-                  onClick={handleLoginSubmit}
-                  type='submit'
-                  dataTest='submitButton'
-                  kind={ButtonKind.RoundedLarge}
-                  loading={loading}
-                >
-                  Entrar
-                </Button>
-              </Form>
-            </Card>
-          </ContentFullHeightStyled>
-        </Col>
-      </Row>
-    </Grid>
+    <ContentFullHeightStyled>
+      <Card>
+        <H1>Bem vindo(a) a lista de TODOs</H1>
+        <Text>Faça o login para começar</Text>
+        <VSeparator />
+        <Form onSubmit={handleLoginSubmit}>
+          <TextInput
+            label='Login'
+            id='loginInput'
+            type='text'
+            onChange={setLoginText}
+            value={loginText}
+            dataTest='loginInput'
+          />
+          <VSeparator small />
+          <TextInput
+            label='Senha'
+            id='loginPassword'
+            type='password'
+            onChange={setPasswordText}
+            value={passwordText}
+            dataTest='passwordInput'
+          />
+          <VSeparator small />
+          <Button
+            onClick={handleLoginSubmit}
+            type='submit'
+            dataTest='submitButton'
+            kind={ButtonKind.RoundedLarge}
+            loading={loading}
+          >
+            Entrar
+          </Button>
+        </Form>
+      </Card>
+    </ContentFullHeightStyled>
   );
 };

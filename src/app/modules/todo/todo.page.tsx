@@ -10,7 +10,6 @@ import { FlashMessageTypes } from '@atomic/mol.flash-message/flash-message.style
 import { LoadingState } from '@atomic/mol.loading-state/loading-state.component';
 import axios from 'axios';
 import * as React from 'react';
-import { Col, Grid, Row } from 'react-styled-flexboxgrid';
 
 import { AppHeader } from '../app/app-header/app-header.component';
 import { CreateTodoForm } from './components/mol.create-todo-form/create-todo-form.component';
@@ -106,67 +105,61 @@ export const Todo: React.FC = () => {
   return (
     <>
       <AppHeader />
-      <Grid fluid>
-        <Row center='xs' middle='xs'>
-          <Col xs={12} md={6}>
-            <VSeparator />
-            <Hbox>
-              <Hbox.Item>
-                <H2>Tarefas existentes</H2>
-              </Hbox.Item>
-              {!creating && (
-                <Hbox.Item noGrow>
-                  <Button kind={ButtonKind.Rounded} onClick={() => setCreating(true)} dataTest='createTodo'>
-                    Criar nova tarefa
-                  </Button>
-                </Hbox.Item>
-              )}
-              {creating && (
-                <CreateTodoForm
-                  active={creating}
-                  currentDescription={newTodoDescription}
-                  currentName={newTodoName}
-                  onDescriptionChange={(newDescription) => setNewTodoDescription(newDescription)}
-                  onNameChange={(newName: string) => setNewTodoName(newName)}
-                  onSubmit={handleTodoAddClick}
-                  onCancel={handleCancelTodoClick}
-                />
-              )}
-            </Hbox>
-            <VSeparator small />
-            <LoadingState data={!!data} loading={loading} error={fetchError || addError || removeError || checkError}>
-              <LoadingState.Error>
-                <Card bordered>
-                  <H2>Ocorreu um erro.</H2>
-                </Card>
-              </LoadingState.Error>
-              <LoadingState.NoData>
-                <Card bordered>
-                  <H2>Nenhum dado a ser mostrado</H2>
-                </Card>
-              </LoadingState.NoData>
-              <LoadingState.Loading>
-                <Card bordered>
-                  <H2>Carregando...</H2>
-                </Card>
-              </LoadingState.Loading>
-              <Card bordered noGutter>
-                {/* <TodoSearch /> */}
-                {data?.list?.map((todo) => (
-                  <TodoItem
-                    onClick={() => handleTodoItemClick(todo.id)}
-                    onDelete={() => handleDelete(todo.id)}
-                    name={todo.name}
-                    description={todo.description}
-                    checked={todo.done}
-                    key={todo.name}
-                  />
-                ))}
-              </Card>
-            </LoadingState>
-          </Col>
-        </Row>
-      </Grid>
+      <VSeparator />
+      <Hbox>
+        <Hbox.Item>
+          <H2>Tarefas existentes</H2>
+        </Hbox.Item>
+        {!creating && (
+          <Hbox.Item noGrow>
+            <Button kind={ButtonKind.Rounded} onClick={() => setCreating(true)} dataTest='createTodo'>
+              Criar nova tarefa
+            </Button>
+          </Hbox.Item>
+        )}
+        {creating && (
+          <CreateTodoForm
+            active={creating}
+            currentDescription={newTodoDescription}
+            currentName={newTodoName}
+            onDescriptionChange={(newDescription) => setNewTodoDescription(newDescription)}
+            onNameChange={(newName: string) => setNewTodoName(newName)}
+            onSubmit={handleTodoAddClick}
+            onCancel={handleCancelTodoClick}
+          />
+        )}
+      </Hbox>
+      <VSeparator small />
+      <LoadingState data={!!data} loading={loading} error={fetchError || addError || removeError || checkError}>
+        <LoadingState.Error>
+          <Card bordered>
+            <H2>Ocorreu um erro.</H2>
+          </Card>
+        </LoadingState.Error>
+        <LoadingState.NoData>
+          <Card bordered>
+            <H2>Nenhum dado a ser mostrado</H2>
+          </Card>
+        </LoadingState.NoData>
+        <LoadingState.Loading>
+          <Card bordered>
+            <H2>Carregando...</H2>
+          </Card>
+        </LoadingState.Loading>
+        <Card bordered noGutter>
+          {/* <TodoSearch /> */}
+          {data?.list?.map((todo) => (
+            <TodoItem
+              onClick={() => handleTodoItemClick(todo.id)}
+              onDelete={() => handleDelete(todo.id)}
+              name={todo.name}
+              description={todo.description}
+              checked={todo.done}
+              key={todo.name}
+            />
+          ))}
+        </Card>
+      </LoadingState>
     </>
   );
 };
