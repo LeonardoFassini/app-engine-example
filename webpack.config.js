@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: './src/app/modules/app/index.tsx',
   plugins: [
     new CleanWebpackPlugin(),
@@ -71,11 +71,6 @@ module.exports = {
         ],
       },
       {
-        enforce: 'pre',
-        test: /\.js$/,
-        loader: 'source-map-loader',
-      },
-      {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
         loader: 'file-loader',
         options: {
@@ -93,5 +88,4 @@ module.exports = {
       '@atomic': path.resolve(__dirname, './src/atomic'),
     },
   },
-  devtool: 'source-map',
 };
