@@ -16,7 +16,6 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-loading": "2.0.3",
-    "react-styled-flexboxgrid": "3.2.1",
     "reflect-metadata": "0.1.13",
     "styled-components": "5.3.0",
     "tsify": "5.0.4",
@@ -58,7 +57,7 @@
     "html-webpack-plugin": "5.3.2"
   },
   "scripts": {
-    "start:dev": "eslint ./src/**/*.{ts,tsx} && webpack-dev-server",
+    "start:dev": "eslint ./src/**/*.{ts,tsx} && webpack serve",
     "build": "webpack",
     "storybook": "start-storybook -p 9001 -c ./src/storybook/",
     "cypress:open": "cypress open",
